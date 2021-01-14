@@ -1,4 +1,4 @@
-<?php namespace App\Controllers\Pages\Auth;
+<?php namespace App\Controllers;
 use App\Controllers\FrontendController;
 use App\Models\Auth\LoginModel;
 
@@ -14,7 +14,7 @@ class Auth extends FrontendController
 
 	public function index()
 	{
-		return redirect()->to(base_url());
+		return view($this->path_view.'google');
 	}
 
 	public function signin()

@@ -18,7 +18,7 @@ if (file_exists(SYSTEMPATH . 'Config/Routes.php')) {
  * --------------------------------------------------------------------
  */
 $routes->setDefaultNamespace('App\Controllers');
-$routes->setDefaultController('Frontend\Home\Main');
+$routes->setDefaultController('Sign');
 $routes->setDefaultMethod('index');
 $routes->setTranslateURIDashes(false);
 $routes->set404Override();
@@ -61,34 +61,20 @@ $routes->add('/403', 'Pages\Response::denied');
 $routes->add('/101', 'Pages\Response::unavailable');
 $routes->add('/comingsoon', 'Pages\Response::comingsoon');
 
-$routes->get('/', 'Frontend\Home\Main::index');
+$routes->get('/', 'Auth::index');
 
 
-//frontend
-$routes->group('auth', function ($routes) {
-    $root_menu = "Pages\Auth\Auth";
-    //pages
-    $routes->add('/', $root_menu . '::index');
-    $routes->get('signout', $root_menu.'::signout');
-    $routes->get('logout',  $root_menu.'::signout');
+// //frontend
+// $routes->group('auth', function ($routes) {
+//     $root_menu = "Auth";
+//     //pages
+//     $routes->add('/', $root_menu . '::index');
+//     $routes->get('signout', $root_menu.'::signout');
+//     $routes->get('logout',  $root_menu.'::signout');
 
-    $routes->post('login',  $root_menu.'::signin');
-    $routes->post('signin',  $root_menu.'::signin');
-});
-
-$routes->group('event', function ($routes) {
-    $root_menu = "Frontend\Event\Main";
-    //pages
-    $routes->add('/', $root_menu . '::index');
-});
-
-$routes->group('event-detail', function ($routes) {
-    $root_menu = "Frontend\Event\Detail";
-    //pages
-    $routes->get('/', $root_menu . '::index');
-});
-
-
+//     $routes->post('login',  $root_menu.'::signin');
+//     $routes->post('signin',  $root_menu.'::signin');
+// });
 
 $routes->group('backend', function ($routes) {
 
